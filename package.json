@@ -1,6 +1,6 @@
 {
   "name": "git-commit-cp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "standardized commit record",
   "main": "./bin/index.js",
   "scripts": {
