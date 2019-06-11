@@ -18,11 +18,13 @@
   },
   "homepage": "https://github.com/Dolov/git-commit-cp#readme",
   "bin": {
-    "git-commit-cp": "./bin/index.js"
+    "git-commit-cp": "./bin/git-commit-cp"
   },
   "dependencies": {
     "import-jsx": "^2.0.0",
     "ink": "^2.2.0",
+    "ink-select-input": "^3.1.1",
+    "ink-text-input": "^3.2.0",
     "react": "^16.8.6"
   }
 }
