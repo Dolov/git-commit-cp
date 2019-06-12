@@ -52,7 +52,7 @@ class Header extends React.Component {
         <Box>
           <Box width={50}>
             <Color whiteBright>*</Color>
-            <Color cyanBright> ****** Welcome ClickPaas git commit !!! </Color>
+            <Color cyanBright> ****** Welcome ClickPaaS git commit !!! </Color>
           </Box>
           <Color whiteBright>*</Color>
         </Box>

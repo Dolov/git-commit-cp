@@ -1454,6 +1454,19 @@ get-value@^2.0.3, get-value@^2.0.6:
   resolved "http://registry.npm.successchannel.tech/get-value/download/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
 
+git-commit-cp@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/git-commit-cp/-/git-commit-cp-1.0.7.tgz#ae2ca68562302aaebcaf08b2e9e9fdbfd260b658"
+  integrity sha512-D0ta1n6JY5Ew/8bA0XNFQ4P+ibwRhg+sZ7cJYNXpGdKxrML+2tQcqzMTayZJDo9eB9ShR0jlJ5w2ZNB2TEDYsw==
+  dependencies:
+    import-jsx "^2.0.0"
+    ink "^2.2.0"
+    ink-select-input "^3.1.1"
+    ink-spinner "^3.0.1"
+    ink-text-input "^3.2.0"
+    react "^16.8.6"
+    shelljs "^0.8.3"
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "http://registry.npm.successchannel.tech/glob-parent/download/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
