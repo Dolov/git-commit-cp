@@ -3,27 +3,31 @@ const { Color, Box } = require('ink');
 const SelectInput = require('ink-select-input').default
 
 const items = [{
-  label: <Color greenBright>feat:        <Color whiteBright>A new feature（添加新功能）</Color></Color>,
+  label: 'A new feature（添加新功能）',
   value: 'feat'
 }, {
-  label: <Color greenBright>fix:         <Color whiteBright>A bug fix（修复bug）</Color></Color>,
+  label: 'A bug fix（修复bug）',
   value: 'fix'
 }, {
-  label: <Color greenBright>docs:        <Color whiteBright>Documentation only changes（修改文档）</Color></Color>,
+  label: 'Documentation only changes（修改文档）',
   value: 'docs'
 }, {
-  label: <Color greenBright>style:       <Color whiteBright>Change that do not affect the meaning of the code（优化代码风格）</Color></Color>,
+  label: 'Change that do not affect the meaning of the code（优化代码风格）',
   value: 'style'
 }, {
-  label: <Color greenBright>refactor:    <Color whiteBright>A code change that neither fixes a bug or adds a feature（重构）</Color></Color>,
+  label: 'A code change that neither fixes a bug or adds a feature（重构）',
   value: 'refactor'
 }, {
-  label: <Color greenBright>pref:        <Color whiteBright>A code change that improves performance（性能优化）</Color></Color>,
+  label: 'A code change that improves performance（性能优化）',
   value: 'pref'
 }, {
-  label: <Color greenBright>chore:       <Color whiteBright>Changes to the build process or auxiliary tools and libraries such as documentation generation（对构建过程或辅助工具和库（如文档生成）的更改）</Color></Color>,
+  label: 'Changes to the build process or auxiliary tools and libraries such as documentation generation（对构建过程或辅助工具和库（如文档生成）的更改）',
   value: 'chore'
 }];
+
+
+const titleEn = `Select the type of change that you're committing`
+const titleCh = `（请选择提交内容的类型）`
 class CommitType extends React.Component {
 
   constructor() {
@@ -33,16 +37,43 @@ class CommitType extends React.Component {
     };
   }
 
-  render() {
-    const { onSelect } = this.props
+  itemComponent({label, value, isSelected}) {
+    if (isSelected) {
+      return (
+        <Color yellowBright value={value}>
+          <Box width={15}><Color>{value}:</Color></Box>
+          <Color>{label}</Color>
+        </Color>
+      )
+    }
     return (
-      <Box flexDirection="column">
-        <Box height={2}></Box>
-        <Color yellowBright>? Select the type of change that you're committing<Color whiteBright>（请选择提交内容的类型）</Color>:</Color>
-        <Box height={1}></Box>
-        <SelectInput items={items} onSelect={onSelect}/>
+      <Color greenBright value={value}>
+        <Box width={15}><Color>{value}:</Color></Box>
+        <Color whiteBright>{label}</Color>
+      </Color>
+    )
+  }
+
+  render() {
+    const { onSelect, value } = this.props
+    return (
+      <Box flexDirection="column" paddingTop={1}>
+        {value&&(<Color yellowBright>{titleEn} <Color greenBright>{value}</Color></Color>)}
+        {!value&&(
+          <Box flexDirection="column">
+            <Color yellowBright>? {titleEn}<Color whiteBright>{titleCh}</Color>:</Color>
+            <Box height={1} />
+            <SelectInput 
+              items={items} 
+              onSelect={onSelect}
+              itemComponent={this.itemComponent}
+            />
+          </Box>)}
       </Box>
     );
   }
 }
+
+
+
 module.exports = CommitType 

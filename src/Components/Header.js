@@ -13,19 +13,50 @@ class Header extends React.Component {
   render() {
     return (
       <Box flexDirection="column">
-        <Color redBright>/**</Color>
-        <Color greenBright> *</Color>
-        <Color yellowBright>  *</Color>
-        <Color blueBright>   *</Color>
-        <Color magentaBright>    *</Color>
-        <Color cyanBright>     *</Color>
-        <Color greenBright>      Welcome ClickPaas git commit !!! </Color>
-        <Color redBright>     *</Color>
-        <Color greenBright>    *</Color>
-        <Color yellowBright>   *</Color>
-        <Color blueBright>  *</Color>
-        <Color magentaBright> *</Color>
-        <Color cyanBright>**/</Color>
+        <Color>***************************************************</Color>
+        <Box>
+          <Box width={50}>
+            <Color whiteBright>*</Color>
+            <Color redBright> *</Color>
+          </Box>
+          <Color whiteBright>*</Color>
+        </Box>
+        <Box>
+          <Box width={50}>
+            <Color whiteBright>*</Color>
+            <Color greenBright> **</Color>
+          </Box>
+          <Color whiteBright>*</Color>
+        </Box>
+        <Box>
+          <Box width={50}>
+            <Color whiteBright>*</Color>
+            <Color yellowBright> ***</Color>
+          </Box>
+          <Color whiteBright>*</Color>
+        </Box>
+        <Box>
+          <Box width={50}>
+            <Color whiteBright>*</Color>
+            <Color blueBright> ****</Color>
+          </Box>
+          <Color whiteBright>*</Color>
+        </Box>
+        <Box>
+          <Box width={50}>
+            <Color whiteBright>*</Color>
+            <Color magentaBright> *****</Color>
+          </Box>
+          <Color whiteBright>*</Color>
+        </Box>
+        <Box>
+          <Box width={50}>
+            <Color whiteBright>*</Color>
+            <Color cyanBright> ****** Welcome ClickPaas git commit !!! </Color>
+          </Box>
+          <Color whiteBright>*</Color>
+        </Box>
+        <Color>***************************************************</Color>
       </Box>
     );
   }
