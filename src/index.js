@@ -7,7 +7,7 @@ const Input = require('import-jsx')("./Components/Input.js");
 // const Spinner = require('ink-spinner').default;
 const utils = require("./utils");
 
-const { isClean } = utils
+const { isClean, commit } = utils
 
 
 const title_changeScope = {
@@ -19,6 +19,8 @@ const title_description = {
   en: 'Write a short, imperative tense description of the change',
   ch: '（请简单描述一下作出的更改）'
 }
+
+const clearTip = 'No files added to staging! Did you forget to run git add ?'
 
 class App extends React.Component {
 
@@ -52,8 +54,16 @@ class App extends React.Component {
   onInputChange(name, value) {
     this.setState({
       [name]: value,
+    }, () => {
+      if (name === 'description') {
+        const { commitType, changeScope, description } = this.state
+        const message = `${commitType} ${changeScope} ${description}`
+        commit(message)
+      }
     })
   }
+
+  
 
   render() {
     const { changeScope, commitType, description, isStageClean } = this.state
@@ -62,7 +72,7 @@ class App extends React.Component {
       <Box flexDirection="column">
         <Header />
         {(isStageClean===true)&&(
-          <Box flexDirection="column" padding={1}><Color yellowBright>No files added to staging! Did you forget to run git add ?</Color></Box>
+          <Box flexDirection="column" padding={1}><Color yellowBright>{clearTip}</Color></Box>
         )}
         {!isStageClean&&(
           <Box flexDirection="column">
