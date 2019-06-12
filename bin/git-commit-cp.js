@@ -5,7 +5,7 @@ process.on('uncaughtException',  err => {
   process.exit(1);
 })
 
-require('import-jsx')('../src/index.js');
+require('import-jsx')('../dist/index.js');
 
 
 

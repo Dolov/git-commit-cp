@@ -64,8 +64,6 @@ class App extends React.Component {
     })
   }
 
-  
-
   render() {
     const { changeScope, commitType, description, isStageClean } = this.state
 
