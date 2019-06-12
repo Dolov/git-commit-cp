@@ -9,6 +9,7 @@ const utils = require("./utils");
 
 const { isClean, commit } = utils
 
+const [,,...otherProps] = process.argv
 
 const title_changeScope = {
   en: 'What is the scope of this change',
@@ -58,7 +59,7 @@ class App extends React.Component {
       if (name === 'description') {
         const { commitType, changeScope, description } = this.state
         const message = `${commitType}(${changeScope}):${description}`
-        commit(message)
+        commit(message, otherProps)
       }
     })
   }

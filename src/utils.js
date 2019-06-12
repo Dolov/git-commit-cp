@@ -1,5 +1,4 @@
 
-const sh = require("shelljs");
 const child_process = require("child_process");
 
 const { exec, spawn } = child_process
@@ -16,16 +15,16 @@ const isClean = (repoPath, done) => {
 }
 
 
-const commit = (message) => {
-  const child = spawn('git', ['commit', '-m', message], {
+const commit = (message, otherProps) => {
+  const child = spawn('git', ['commit', '-m', message, ...otherProps], {
     cwd: process.cwd(),
     stdio: 'inherit'
   });
   child.on('error', function (err) {
-    console.log('error')
+    // console.log('error')
   });
   child.on('exit', function (err) {
-    console.log('exit')
+    // console.log('exit')
   });
 }
 
