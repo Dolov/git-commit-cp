@@ -57,7 +57,7 @@ class App extends React.Component {
     }, () => {
       if (name === 'description') {
         const { commitType, changeScope, description } = this.state
-        const message = `${commitType} ${changeScope} ${description}`
+        const message = `${commitType}${(changeScope)}:${description}`
         commit(message)
       }
     })

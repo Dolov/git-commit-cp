@@ -19,6 +19,7 @@ const isClean = (repoPath, done) => {
 const commit = (message) => {
   const child = spawn('git', ['commit', '-m', message], {
     cwd: process.cwd(),
+    stdio: 'inherit'
   });
   child.on('error', function (err) {
     console.log('error')
