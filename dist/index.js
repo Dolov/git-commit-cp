@@ -2,6 +2,8 @@
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28,40 +30,29 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var config = require("./config");
-
 var React = require('react');
 
 var _require = require('ink'),
     render = _require.render,
     Color = _require.Color,
-    Text = _require.Text,
     Box = _require.Box;
 
-var Header = require('import-jsx')("./Components/Header");
+var Welcome = require('import-jsx')("./Components/Welcome");
 
-var CommitType = require('import-jsx')("./Components/CommitType");
-
-var Input = require('import-jsx')("./Components/Input.js"); // const Spinner = require('ink-spinner').default;
-
+var Rules = require('import-jsx')("./Components/Rules");
 
 var utils = require("./utils");
 
-var isClean = utils.isClean,
-    commit = utils.commit;
+var commit = utils.commit,
+    getConfig = utils.getConfig,
+    isValidCommit = utils.isValidCommit;
+
+var _getConfig = getConfig(),
+    title = _getConfig.title,
+    rules = _getConfig.rules;
 
 var _process$argv = _toArray(process.argv),
-    otherProps = _process$argv.slice(2);
-
-var title_changeScope = {
-  en: 'What is the scope of this change',
-  ch: '（请填写改动了那些组件或者文件名称）'
-};
-var title_description = {
-  en: 'Write a short, imperative tense description of the change',
-  ch: '（请简单描述一下作出的更改）'
-};
-var clearTip = 'No files added to staging! Did you forget to run git add ?';
+    otherProcessArgv = _process$argv.slice(2);
 
 var App =
 /*#__PURE__*/
@@ -75,13 +66,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
     _this.state = {
-      commitType: null,
-      changeScope: "",
-      description: "",
-      isStageClean: null
+      isValidCommit: false,
+      isValidCommitMessage: "",
+      messageParams: {}
     };
-    _this.onInputChange = _this.onInputChange.bind(_assertThisInitialized(_this));
-    _this.onCommitTypeSelect = _this.onCommitTypeSelect.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    _this.onCommit = _this.onCommit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -90,68 +80,71 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      isClean(process.cwd(), function (error, isStageClean) {
-        if (error) return;
-
+      isValidCommit(process.cwd(), function (valid, message) {
         _this2.setState({
-          isStageClean: isStageClean
+          isValidCommit: valid,
+          isValidCommitMessage: message || ""
         });
       });
     }
   }, {
-    key: "onCommitTypeSelect",
-    value: function onCommitTypeSelect(item) {
+    key: "onSubmit",
+    value: function onSubmit(name, value) {
+      var _this3 = this;
+
+      var messageParams = this.state.messageParams;
       this.setState({
-        commitType: item.value
+        messageParams: _objectSpread({}, messageParams, _defineProperty({}, name, value))
+      }, function () {
+        _this3.onCommit(name);
       });
     }
   }, {
-    key: "onInputChange",
-    value: function onInputChange(name, value) {
-      var _this3 = this;
+    key: "onCommit",
+    value: function onCommit(currentName) {
+      var endName = rules[rules.length - 1].name;
 
-      this.setState(_defineProperty({}, name, value), function () {
-        if (name === 'description') {
-          var _this3$state = _this3.state,
-              commitType = _this3$state.commitType,
-              changeScope = _this3$state.changeScope,
-              description = _this3$state.description;
-          var message = "".concat(commitType, "(").concat(changeScope, "):").concat(description);
-          commit(message, otherProps);
-        }
-      });
+      if (endName === currentName) {
+        var messageParams = this.state.messageParams;
+        var message = [];
+        Object.keys(messageParams).forEach(function (name) {
+          var _ref = rules.find(function (rule) {
+            return rule.name === name;
+          }) || {},
+              commitFix = _ref.commitFix;
+
+          var value = messageParams[name] || '';
+
+          if (typeof commitFix === 'string' && commitFix.includes('${message}')) {
+            var mess = commitFix.replace(/\${message}/, value);
+            message.push(mess);
+          } else {
+            message.push(value);
+          }
+        });
+        commit(message.join(""), otherProcessArgv);
+      }
     }
   }, {
     key: "render",
     value: function render() {
       var _this$state = this.state,
-          changeScope = _this$state.changeScope,
-          commitType = _this$state.commitType,
-          description = _this$state.description,
-          isStageClean = _this$state.isStageClean;
+          isValidCommit = _this$state.isValidCommit,
+          isValidCommitMessage = _this$state.isValidCommitMessage,
+          messageParams = _this$state.messageParams;
       return React.createElement(Box, {
         flexDirection: "column"
-      }, React.createElement(Header, null), isStageClean === true && React.createElement(Box, {
-        flexDirection: "column",
-        padding: 1
+      }, React.createElement(Welcome, {
+        title: title
+      }), React.createElement(Box, {
+        flexDirection: "column"
       }, React.createElement(Color, {
         yellowBright: true
-      }, clearTip)), !isStageClean && React.createElement(Box, {
-        flexDirection: "column"
-      }, React.createElement(CommitType, {
-        value: commitType,
-        onSelect: this.onCommitTypeSelect
-      }), commitType && React.createElement(Input, {
-        name: "changeScope",
-        value: changeScope,
-        onChange: this.onInputChange,
-        title: title_changeScope
-      }), changeScope && React.createElement(Input, {
-        name: "description",
-        value: description,
-        onChange: this.onInputChange,
-        title: title_description
-      })));
+      }, isValidCommitMessage)), isValidCommit && React.createElement(Rules, {
+        data: rules,
+        onSubmit: this.onSubmit,
+        messageParams: messageParams
+      }));
     }
   }]);
 
