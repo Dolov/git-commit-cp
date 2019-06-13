@@ -14,8 +14,6 @@ const {
 
 const [,,...otherProps] = process.argv
 
-
-
 class App extends React.Component {
 
   constructor() {
@@ -77,7 +75,7 @@ class App extends React.Component {
     return (
       <Box flexDirection="column">
         <Welcome title={title} />
-        <Box flexDirection="column" padding={1}><Color yellowBright>{isValidCommitMessage}</Color></Box>
+        <Box flexDirection="column"><Color yellowBright>{isValidCommitMessage}</Color></Box>
         {isValidCommit&&(
           <Rules 
             data={rules} 

@@ -13,7 +13,7 @@ class Welcome extends React.Component {
   render() {
     const { title } = this.props
     return (
-      <Box flexDirection="column">
+      <Box flexDirection="column" padding={1}>
         <Color redBright> *</Color>
         <Color greenBright> **</Color>
         <Color yellowBright> ***</Color>

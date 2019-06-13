@@ -1,7 +1,8 @@
 const React = require('react');
-const { Color, Box, Text } = require('ink');
+const { Color, Box } = require('ink');
 const TextInput = require('ink-text-input').default
 const { getDesc } = require("../utils")
+const Required = require('import-jsx')("./Required")
 
 
 class Input extends React.Component {
@@ -39,15 +40,14 @@ class Input extends React.Component {
     const { value, required } = this.state
     const { submited, description, placeholder, required: requiredProps } = this.props
     const { desc_us, desc_cn } = getDesc(description)
-    const requiredMess = typeof requiredProps === 'boolean' ? 'required': requiredProps
     return (
-      <Box flexDirection="column" paddingTop={1}>
+      <Box flexDirection="column" paddingBottom={1}>
         {!submited&&(
           <Box flexDirection="column">
             <Box flexDirection="column">
               <Color yellowBright>{desc_us}</Color>
               <Color whiteBright>{desc_cn}</Color>
-              {required&&(<Color redBright>{requiredMess}</Color>)}
+              <Required required={required} message={requiredProps} />
             </Box>
             <Box height={1} />
             <TextInput 

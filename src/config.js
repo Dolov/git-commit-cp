@@ -1,14 +1,17 @@
+
+const required = "代码千万行，注释第一行。编码不规范，同事两行泪。"
+
 module.exports = {
   title: "Welcome ClickPaas git Commitizen...",
   rules: [
     {
-      type: 'RADIO',
+      type: 'CHECKBOX',
       name: 'commitType',
       description: {
         'en-US': `Select the type of change that you're committing`,
         'zh-CN': '请选择提交内容的类型',
       },
-      required: true,
+      required,
       options: [{
         title: 'A new feature（新功能）',
         value: 'feat'
@@ -40,7 +43,7 @@ module.exports = {
         'en-US': 'What is the scope of this change, route, component, utils, build...',
         'zh-CN': '影响的范围, 比如: route, component, utils, build...',
       },
-      required: "代码千万行，注释第一行。编码不规范，同事两行泪。",
+      required,
     },
     {
       type: 'INPUT',
@@ -50,7 +53,7 @@ module.exports = {
         'en-US': 'Write a short, imperative tense description of the change',
         'zh-CN': '请简单描述一下作出的更改',
       },
-      required: true,
+      required,
     },
   ]
 }
