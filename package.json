@@ -1,6 +1,6 @@
 {
   "name": "git-commit-cp",
-  "version": "1.0.16",
+  "version": "1.0.15",
   "description": "standardized commit record",
   "main": "dist/index.js",
   "scripts": {
@@ -13,12 +13,17 @@
     "dist",
     "bin"
   ],
-  "keywords": [
-    "git",
-    "commit"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dolov/git-commit-cp.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dolov/git-commit-cp/issues"
+  },
+  "homepage": "https://github.com/Dolov/git-commit-cp#readme",
   "bin": {
     "git-cp-init": "./bin/init",
     "git-commit-cp": "./bin/git-commit-cp"
