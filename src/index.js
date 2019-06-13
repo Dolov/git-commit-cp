@@ -1,27 +1,20 @@
-const config = require("./config");
 const React = require('react');
-const { render, Color, Text, Box } = require('ink');
-const Header = require('import-jsx')("./Components/Header");
+const { render, Color, Box } = require('ink');
+const Welcome = require('import-jsx')("./Components/Welcome");
 const CommitType = require('import-jsx')("./Components/CommitType");
 const Input = require('import-jsx')("./Components/Input.js");
-// const Spinner = require('ink-spinner').default;
 const utils = require("./utils");
 
-const { isClean, commit } = utils
+const { 
+  commit, 
+  isValidCommit, 
+  title_changeScope,
+  title_description, 
+} = utils
 
 const [,,...otherProps] = process.argv
 
-const title_changeScope = {
-  en: 'What is the scope of this change',
-  ch: '（请填写改动了那些组件或者文件名称）'
-}
 
-const title_description = {
-  en: 'Write a short, imperative tense description of the change',
-  ch: '（请简单描述一下作出的更改）'
-}
-
-const clearTip = 'No files added to staging! Did you forget to run git add ?'
 
 class App extends React.Component {
 
@@ -31,17 +24,18 @@ class App extends React.Component {
       commitType: null,
       changeScope: "",
       description: "",
-      isStageClean: null,
+      isValidCommit: false,
+      isValidCommitMessage: "",
     };
     this.onInputChange = this.onInputChange.bind(this)
     this.onCommitTypeSelect = this.onCommitTypeSelect.bind(this)
   }
 
   componentDidMount() {
-    isClean(process.cwd(), (error, isStageClean) => {
-      if (error) return 
+    isValidCommit(process.cwd(), (valid, message) => {
       this.setState({
-        isStageClean: isStageClean,
+        isValidCommit: valid,
+        isValidCommitMessage: message,
       })
     })
   }
@@ -65,15 +59,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { changeScope, commitType, description, isStageClean } = this.state
-
+    const { changeScope, commitType, description, isValidCommit, isValidCommitMessage } = this.state
     return (
       <Box flexDirection="column">
-        <Header />
-        {(isStageClean===true)&&(
-          <Box flexDirection="column" padding={1}><Color yellowBright>{clearTip}</Color></Box>
-        )}
-        {!isStageClean&&(
+        <Welcome />
+        <Box flexDirection="column" padding={1}><Color yellowBright>{isValidCommitMessage}</Color></Box>
+        {isValidCommit&&(
           <Box flexDirection="column">
             <CommitType value={commitType} onSelect={this.onCommitTypeSelect} />
             {commitType&&(
@@ -82,16 +73,14 @@ class App extends React.Component {
                 value={changeScope} 
                 onChange={this.onInputChange} 
                 title={title_changeScope}
-              />
-            )}
+              />)}
             {changeScope&&(
               <Input 
                 name="description"
                 value={description} 
                 onChange={this.onInputChange} 
                 title={title_description}
-              />
-            )}
+              />)}
           </Box>)}
       </Box>
     );

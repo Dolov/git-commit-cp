@@ -34,7 +34,6 @@
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "git-commit-cp": "^1.0.7"
+    "@babel/preset-react": "^7.0.0"
   }
 }

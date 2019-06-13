@@ -41,14 +41,14 @@ class CommitType extends React.Component {
     if (isSelected) {
       return (
         <Color yellowBright value={value}>
-          <Box width={15}><Color>{value}:</Color></Box>
+          <Box width={20}><Color>{value}:</Color></Box>
           <Color>{label}</Color>
         </Color>
       )
     }
     return (
       <Color greenBright value={value}>
-        <Box width={15}><Color>{value}:</Color></Box>
+        <Box width={20}><Color>{value}:</Color></Box>
         <Color whiteBright>{label}</Color>
       </Color>
     )

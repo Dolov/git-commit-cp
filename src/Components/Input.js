@@ -22,7 +22,7 @@ class Input extends React.Component {
 
   onSubmit(value) {
     const { name, onChange } = this.props
-    onChange(name, value)
+    onChange(name, value || true)
   }
 
   render() {
