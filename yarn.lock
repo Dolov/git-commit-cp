@@ -1589,6 +1589,16 @@ ini@~1.3.0:
   resolved "http://registry.npm.successchannel.tech/ini/download/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha1-7uJfVtscnsYIXgwid4CD9Zar+Sc=
 
+ink-multi-select@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ink-multi-select/-/ink-multi-select-1.0.3.tgz#901b196575ead33595da3253222b1f51fa8f8470"
+  integrity sha512-4EX4Fp9W79k1jXJt4sXiCS7h9DDCl2OCdIguY7hhf7mdTEk6wSHsPvkBpEYGaK5SX8I5d0vbO0TUaut0lmmDdw==
+  dependencies:
+    arr-rotate "^1.0.0"
+    figures "^2.0.0"
+    lodash.isequal "^4.5.0"
+    prop-types "^15.5.10"
+
 ink-select-input@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/ink-select-input/-/ink-select-input-3.1.1.tgz#4af3b4cf5aee427801a3506bc50b1f634342cfd5"

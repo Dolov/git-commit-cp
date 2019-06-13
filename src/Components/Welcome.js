@@ -11,6 +11,7 @@ class Welcome extends React.Component {
   }
 
   render() {
+    const { title } = this.props
     return (
       <Box flexDirection="column">
         <Color redBright> *</Color>
@@ -18,7 +19,7 @@ class Welcome extends React.Component {
         <Color yellowBright> ***</Color>
         <Color blueBright> ****</Color>
         <Color magentaBright> *****</Color>
-        <Color cyanBright> ****** Welcome ClickPaaS git commit !!! </Color>
+        <Color cyanBright> ****** {title}</Color>
       </Box>
     );
   }

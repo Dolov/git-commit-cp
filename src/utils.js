@@ -4,15 +4,13 @@ const child_process = require("child_process");
 const { exec, spawn } = child_process
 
 
-const title_changeScope = {
-  en: 'What is the scope of this change',
-  ch: '（请填写改动了那些组件或者文件名称）'
+const getDesc = description => {
+  const isObject = description && typeof description === 'object'
+  const desc_us = isObject ? description['en-US']: description
+  const desc_cn = isObject ? description['zh-CN']: ""
+  return { desc_us, desc_cn }
 }
 
-const title_description = {
-  en: 'Write a short, imperative tense description of the change',
-  ch: '（请简单描述一下作出的更改）'
-}
 
 const isValidCommit = (repoPath, done) => {
   exec('git diff --no-ext-diff --name-only && git diff --no-ext-diff --cached --name-only', {
@@ -53,8 +51,7 @@ const commit = (message, otherProps) => {
 
 module.exports = {
   commit,
+  getDesc,
   isValidCommit,
-  title_changeScope,
-  title_description,
 }
 

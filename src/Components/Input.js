@@ -1,6 +1,7 @@
 const React = require('react');
-const { Color, Box } = require('ink');
+const { Color, Box, Text } = require('ink');
 const TextInput = require('ink-text-input').default
+const { getDesc } = require("../utils")
 
 
 class Input extends React.Component {
@@ -9,46 +10,66 @@ class Input extends React.Component {
     super();
     this.state = {
       value: "",
+      required: false,
     };
     this.onSubmit = this.onSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
   }
 
   onChange(value) {
+    const required = value ? false: true
     this.setState({
       value,
+      required,
     })
   }
 
   onSubmit(value) {
-    const { name, onChange } = this.props
-    onChange(name, value || true)
+    const { name, onSubmit, required } = this.props
+    if (required && !value) {
+      this.setState({
+        required: true,
+      })
+    } else {
+      onSubmit(name, value)
+    }
   }
 
   render() {
-    const { value } = this.state
-    const { value: inputValue, title } = this.props
-    const { en, ch } = title
+    const { value, required } = this.state
+    const { submited, description, placeholder, required: requiredProps } = this.props
+    const { desc_us, desc_cn } = getDesc(description)
+    const requiredMess = typeof requiredProps === 'boolean' ? 'required': requiredProps
     return (
       <Box flexDirection="column" paddingTop={1}>
-        {!inputValue&&(
+        {!submited&&(
           <Box flexDirection="column">
-            <Color yellowBright>? {en}<Color whiteBright>{ch}</Color>:</Color>
+            <Box flexDirection="column">
+              <Color yellowBright>{desc_us}</Color>
+              <Color whiteBright>{desc_cn}</Color>
+              {required&&(<Color redBright>{requiredMess}</Color>)}
+            </Box>
             <Box height={1} />
             <TextInput 
               showCursor
-              highlightPastedText
               value={value} 
               onChange={this.onChange} 
               onSubmit={this.onSubmit} 
-              placeholder="Enter here ..."
+              placeholder={placeholder}
             />
           </Box>)}
-        {inputValue&&(
-          <Color yellowBright>{en} <Color greenBright>{inputValue}</Color></Color>
+        {submited&&(
+          <Color yellowBright>{desc_us} <Color greenBright>{value}</Color></Color>
         )}
       </Box>
     );
   }
 }
+
+
+Input.defaultProps = {
+  required: false,
+  placeholder: "Enter here ...",
+}
+
 module.exports = Input 
