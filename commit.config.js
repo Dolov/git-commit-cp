@@ -2,7 +2,7 @@
 const required = "代码千万行，注释第一行。编码不规范，同事两行泪。"
 
 module.exports = {
-  title: "Welcome ClickPaas git Commitizen...",
+  title: "Welcome ClickPaaS git Commitizen...",
   rules: [
     {
       type: 'RADIO',
@@ -50,7 +50,7 @@ module.exports = {
     {
       type: 'INPUT',
       name: 'description',
-      commitFix: "--${message}",
+      commitFix: "——${message}",
       placeholder: "Enter here ...",
       description: {
         'en-US': 'Write a short, imperative tense description of the change',
