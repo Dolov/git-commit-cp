@@ -12,7 +12,7 @@ const {
   isValidCommit, 
 } = utils
 
-const [,,...otherProps] = process.argv
+const [,,...otherProcessArgv] = process.argv
 
 class App extends React.Component {
 
@@ -45,30 +45,29 @@ class App extends React.Component {
         ...messageParams,
         [name]: value,
       }
+    }, () => {
+      this.onCommit(name)
     })
   }
 
-  onCommit() {
-
+  onCommit(currentName) {
+    const endName = rules[rules.length - 1].name
+    if (endName === currentName) {
+      const { messageParams } = this.state
+      const message = []
+      Object.keys(messageParams).forEach(name => {
+        const { commitFix } = rules.find(rule => rule.name === name) || {}
+        const value = messageParams[name] || ''
+        if (typeof commitFix === 'string' && commitFix.includes('${message}')) {
+          const mess = commitFix.replace(/\${message}/, value)
+          message.push(mess)
+        } else {
+          message.push(value)
+        }
+      })
+      commit(message.join(""), otherProcessArgv)
+    }
   }
-
-  // onSelect(item) {
-  //   this.setState({
-  //     commitType: item.value,
-  //   })
-  // }
-
-  // onChange(name, value) {
-  //   this.setState({
-  //     [name]: value,
-  //   }, () => {
-  //     if (name === 'description') {
-  //       const { commitType, changeScope, description } = this.state
-  //       const message = `${commitType}(${changeScope}):${description}`
-  //       commit(message, otherProps)
-  //     }
-  //   })
-  // }
 
   render() {
     const { isValidCommit, isValidCommitMessage, messageParams } = this.state

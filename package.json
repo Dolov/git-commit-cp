@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Dolov/git-commit-cp#readme",
   "bin": {
+    "git-cp-init": "./bin/init",
     "git-commit-cp": "./bin/git-commit-cp"
   },
   "dependencies": {

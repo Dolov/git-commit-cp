@@ -33,8 +33,8 @@ const isValidCommit = (repoPath, done) => {
 }
 
 
-const commit = (message, otherProps) => {
-  const child = spawn('git', ['commit', '-m', message, ...otherProps], {
+const commit = (message, otherProcessArgv) => {
+  const child = spawn('git', ['commit', '-m', message, ...otherProcessArgv], {
     cwd: process.cwd(),
     stdio: 'inherit'
   });
