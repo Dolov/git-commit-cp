@@ -35,14 +35,14 @@
     "ink-select-input": "^3.1.1",
     "ink-spinner": "^3.0.1",
     "ink-text-input": "^3.2.0",
-    "react": "^16.8.6",
-    "shelljs": "^0.8.3",
-    "@babel/plugin-transform-runtime": "^7.4.4"
+    "react": "^16.8.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/runtime": "^7.4.5"
   }
 }
