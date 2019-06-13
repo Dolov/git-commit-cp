@@ -5,7 +5,7 @@ module.exports = {
   title: "Welcome ClickPaas git Commitizen...",
   rules: [
     {
-      type: 'CHECKBOX',
+      type: 'RADIO',
       name: 'commitType',
       commitFix: "",
       description: {

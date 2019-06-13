@@ -1,5 +1,8 @@
 
 const child_process = require("child_process");
+const config = require("./config");
+
+const rootPath = process.cwd()
 
 const { exec, spawn } = child_process
 
@@ -15,7 +18,7 @@ const getDesc = description => {
 const isValidCommit = (repoPath, done) => {
   exec('git diff --no-ext-diff --name-only && git diff --no-ext-diff --cached --name-only', {
     maxBuffer: Infinity,
-    cwd: repoPath || process.cwd()
+    cwd: repoPath || rootPath
   }, (error, stdout) => {
     if (error) {
       const { code } = error
@@ -35,7 +38,7 @@ const isValidCommit = (repoPath, done) => {
 
 const commit = (message, otherProcessArgv) => {
   const child = spawn('git', ['commit', '-m', message, ...otherProcessArgv], {
-    cwd: process.cwd(),
+    cwd: rootPath,
     stdio: 'inherit'
   });
   child.on('error', function (err) {
@@ -48,10 +51,23 @@ const commit = (message, otherProcessArgv) => {
 
 
 
+const getConfig = () => {
+  let conf = null
+  try {
+    conf = require(`${rootPath}/commit.config.js`)
+    console.log("customize config")
+  } catch (error) {
+    console.log("default config")
+    conf = config
+  }
+  return conf
+}
+
 
 module.exports = {
   commit,
   getDesc,
+  getConfig,
   isValidCommit,
 }
 

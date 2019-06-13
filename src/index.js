@@ -3,14 +3,14 @@ const { render, Color, Box } = require('ink');
 const Welcome = require('import-jsx')("./Components/Welcome");
 const Rules = require('import-jsx')("./Components/Rules")
 const utils = require("./utils");
-const config = require("./config");
-
-const { title, rules } = config
 
 const { 
   commit, 
+  getConfig,
   isValidCommit, 
 } = utils
+
+const { title, rules } = getConfig()
 
 const [,,...otherProcessArgv] = process.argv
 
