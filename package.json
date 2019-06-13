@@ -13,17 +13,11 @@
     "dist",
     "bin"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Dolov/git-commit-cp.git"
-  },
-  "keywords": [],
+  
+  "keywords": ["git", "commit"],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Dolov/git-commit-cp/issues"
-  },
-  "homepage": "https://github.com/Dolov/git-commit-cp#readme",
+  
   "bin": {
     "git-cp-init": "./bin/init",
     "git-commit-cp": "./bin/git-commit-cp"
