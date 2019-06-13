@@ -1,6 +1,6 @@
 {
   "name": "git-commit-cp",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "standardized commit record",
   "main": "dist/index.js",
   "scripts": {
@@ -13,11 +13,12 @@
     "dist",
     "bin"
   ],
-  
-  "keywords": ["git", "commit"],
+  "keywords": [
+    "git",
+    "commit"
+  ],
   "author": "",
   "license": "ISC",
-  
   "bin": {
     "git-cp-init": "./bin/init",
     "git-commit-cp": "./bin/git-commit-cp"
