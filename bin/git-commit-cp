@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
 
-require('import-jsx')('../src/index.js');
+require('import-jsx')('../dist/index.js');
