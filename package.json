@@ -29,6 +29,7 @@
     "git-commit-cp": "./bin/git-commit-cp"
   },
   "dependencies": {
+    "ink": "^2.2.0",
     "import-jsx": "^2.0.0",
     "ink-multi-select": "^1.0.3",
     "ink-select-input": "^3.1.1",
@@ -37,9 +38,7 @@
     "react": "^16.8.6",
     "@babel/runtime": "^7.4.5"
   },
-  "peerDependencies": {
-    "ink": "^2.2.0"
-  },
+  
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
