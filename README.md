@@ -2,6 +2,8 @@
 
 ## 规范化流程化项目化提交 Git Commit Message
 
+![image](./git-commit-cp.gif)
+
 > 优雅规范的提交团队项目的 Git Commit Message 对于版本控制有着十分重要的作用,该 npm 模块可以定制项目的 Commit Message 的提交流程。
 
 ## ✨ 特性
