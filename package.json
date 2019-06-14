@@ -1,6 +1,6 @@
 {
   "name": "git-commit-cp",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "standardized commit record",
   "main": "dist/index.js",
   "scripts": {
@@ -38,8 +38,8 @@
     "@babel/runtime": "^7.4.5"
   },
   "peerDependencies": {
-		"ink": "^2.2.0"
-	},
+    "ink": "^2.2.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
