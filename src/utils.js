@@ -42,6 +42,7 @@ const commit = (message, otherProcessArgv) => {
     stdio: 'inherit'
   });
   child.on('error', function (err) {
+    console.log(err)
     // console.log('error')
   });
   child.on('exit', function (err) {
