@@ -42,4 +42,4 @@ yarn git commit-cp
 git cp-init
 ```
 
-该命令将在当前目录下生成 commit.config.js 文件, 可根据团队及项目需要自行配置。
+该命令将在当前目录下生成 [commit.config.js](./src/config.js) 文件, 可根据团队及项目需要自行配置。
