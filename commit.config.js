@@ -38,7 +38,7 @@ module.exports = {
     type: 'INPUT',
     name: 'changeScope',
     placeholder: "Enter here ...",
-    commitFix: "#${message}",
+    commitFix: "(${message})",
     description: {
       'en-US': 'What is the scope of this change, route, component, utils, build...',
       'zh-CN': '影响的范围, 比如: route, component, utils, build...'
@@ -47,7 +47,7 @@ module.exports = {
   }, {
     type: 'INPUT',
     name: 'description',
-    commitFix: "--${message}",
+    commitFix: ":${message}",
     placeholder: "Enter here ...",
     description: {
       'en-US': 'Write a short, imperative tense description of the change',
