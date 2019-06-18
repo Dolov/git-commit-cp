@@ -1,11 +1,13 @@
 
 const required = "代码千万行，注释第一行。编码不规范，同事两行泪。"
 
+// type: CHECKBOX | RADIO | INPUT
+
 module.exports = {
   title: "Welcome ClickPaas git Commitizen...",
   rules: [
     {
-      type: 'CHECKBOX',
+      type: 'RADIO',
       name: 'commitType',
       commitFix: "",
       description: {
@@ -35,17 +37,6 @@ module.exports = {
         title: 'Changes to the build process or auxiliary tools and libraries such as documentation generation（其他修改, 比如构建流程, 依赖管理）',
         value: 'chore'
       }]
-    },
-    {
-      type: 'INPUT',
-      name: 'changeScope',
-      placeholder: "Enter here ...",
-      commitFix: "(${message})",
-      description: {
-        'en-US': 'What is the scope of this change, route, component, utils, build...',
-        'zh-CN': '影响的范围, 比如: route, component, utils, build...',
-      },
-      required,
     },
     {
       type: 'INPUT',

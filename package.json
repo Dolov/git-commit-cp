@@ -26,7 +26,8 @@
   "homepage": "https://github.com/Dolov/git-commit-cp#readme",
   "bin": {
     "git-cp-init": "./bin/init",
-    "git-commit-cp": "./bin/git-commit-cp"
+    "git-commit-cp": "./bin/git-commit-cp",
+    "git-cp": "./bin/git-commit-cp"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.5",
