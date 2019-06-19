@@ -16,8 +16,8 @@ module.exports = {
       },
       required,
       options: [{
-        title: 'A new feature（新功能）',
-        value: 'feat'
+        title: 'when improving the format/structure of the code',
+        value: '🎨'
       }, {
         title: 'A bug fix（修复问题）',
         value: 'fix'
