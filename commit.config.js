@@ -15,28 +15,56 @@ module.exports = {
         'zh-CN': '请选择提交内容的类型',
       },
       required,
-      options: [{
-        title: 'when improving the format/structure of the code',
-        value: '🎨'
-      }, {
-        title: 'when improving performance',
-        value: '🐎'
-      }, {
-        title: 'Documentation only changes（文档修改）',
-        value: 'docs'
-      }, {
-        title: 'Change that do not affect the meaning of the code（代码格式修改, 注意不是 css 修改）',
-        value: 'style'
-      }, {
-        title: 'A code change that neither fixes a bug or adds a feature（代码重构）',
-        value: 'refactor'
-      }, {
-        title: 'A code change that improves performance（性能优化）',
-        value: 'pref'
-      }, {
-        title: 'Changes to the build process or auxiliary tools and libraries such as documentation generation（其他修改, 比如构建流程, 依赖管理）',
-        value: 'chore'
-      }]
+      options: [
+        {
+          title: 'when add a new feature',
+          value: '✨'
+        }, {
+          title: 'when fixing a bug',
+          value: '🐛'
+        }, {
+          title: 'when improving performance',
+          value: '🐎'
+        }, {
+          title: 'when improving the format/structure of the code',
+          value: '🎨'
+        }, {
+          title: 'when plugging memory leaks',
+          value: '🚱'
+        }, {
+          title: 'when writing docs',
+          value: '📝'
+        }, {
+          title: 'when fixing something on Linux',
+          value: '🐧'
+        }, {
+          title: 'when fixing something on macOS',
+          value: '🍎'
+        }, {
+          title: 'when fixing something on Windows',
+          value: '🏁'
+        }, {
+          title: 'when removing code or files',
+          value: '🔥'
+        }, {
+          title: 'when fixing the CI build',
+          value: '💚'
+        }, {
+          title: 'when adding tests',
+          value: '✅'
+        }, {
+          title: 'when dealing with security',
+          value: '🔒'
+        }, {
+          title: 'when upgrading dependencies',
+          value: '⬆️'
+        }, {
+          title: 'when downgrading dependencies',
+          value: '⬇️'
+        }, {
+          title: 'when removing linter warnings',
+          value: '👕'
+        }]
     },
     {
       type: 'INPUT',

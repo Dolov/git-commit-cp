@@ -21,14 +21,14 @@ class Select extends React.Component {
     if (isSelected) {
       return (
         <Color yellowBright value={value}>
-          <Box width={20}><Color>{value}:</Color></Box>
+          <Box width={15}><Color>{value}</Color></Box>
           <Color>{title}</Color>
         </Color>
       )
     }
     return (
       <Color greenBright value={value}>
-        <Box width={20}><Color>{value}:</Color></Box>
+        <Box width={15}><Color>{value}</Color></Box>
         <Color whiteBright>{title}</Color>
       </Color>
     )
