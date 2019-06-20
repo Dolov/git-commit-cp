@@ -14,12 +14,7 @@ class Welcome extends React.Component {
     const { title } = this.props
     return (
       <Box flexDirection="column" padding={1}>
-        <Color redBright> *</Color>
-        <Color greenBright> **</Color>
-        <Color yellowBright> ***</Color>
-        <Color blueBright> ****</Color>
-        <Color magentaBright> *****</Color>
-        <Color cyanBright> ****** {title}</Color>
+        <Color cyanBright>{title}</Color>
       </Box>
     );
   }

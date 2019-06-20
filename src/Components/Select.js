@@ -1,5 +1,5 @@
 const React = require('react');
-const { Color, Box } = require('ink');
+const { Color, Box, Text } = require('ink');
 const RadioSelect = require('ink-select-input').default
 const MultiSelect = require('ink-multi-select').default
 const Required = require('import-jsx')("./Required")
@@ -21,15 +21,13 @@ class Select extends React.Component {
     if (isSelected) {
       return (
         <Color yellowBright value={value}>
-          <Box width={15}><Color>{value}</Color></Box>
-          <Color>{title}</Color>
+          <Color>{value}  {title}</Color>
         </Color>
       )
     }
     return (
       <Color greenBright value={value}>
-        <Box width={15}><Color>{value}</Color></Box>
-        <Color whiteBright>{title}</Color>
+        <Color>{value}  {title}</Color>
       </Color>
     )
   }

@@ -64,12 +64,13 @@ module.exports = {
         }, {
           title: 'when removing linter warnings',
           value: '👕'
-        }]
+        }
+      ]
     },
     {
       type: 'INPUT',
       name: 'description',
-      commitFix: ":${message}",
+      commitFix: "",
       placeholder: "Enter here ...",
       description: {
         'en-US': 'Write a short, imperative tense description of the change',
